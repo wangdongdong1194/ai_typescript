@@ -9,6 +9,7 @@
     "tool": "tsx src/tool.ts",
     "chat": "tsx src/chat.ts",
     "agent": "tsx src/agent.ts",
+    "multichain": "tsx src/multiChain.ts",
     "build": "tsc"
   },
   "keywords": [],
