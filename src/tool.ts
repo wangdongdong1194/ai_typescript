@@ -2,6 +2,8 @@ import { DynamicTool, Tool } from "@langchain/core/tools";
 import fs from "fs";
 /**
  * 通过DynamicTool和Tool创建工具示例
+ * 
+ * Tool已经不推荐使用，会报错
  */
 
 export const upperTool = new DynamicTool({
