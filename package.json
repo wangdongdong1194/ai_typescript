@@ -1,0 +1,35 @@
+{
+  "name": "use_robot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "chain": "tsx src/langchain.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/index.ts",
+    "t": "tsx src/t.ts",
+    "a": "tsx src/a.ts",
+    "start": "tsx src/index.ts",
+    "c": "tsx src/copy_langchain.ts",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "tsx": "^4.20.6",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "@langchain/anthropic": "^1.3.26",
+    "@langchain/core": "^1.1.40",
+    "@langchain/langgraph": "^1.2.9",
+    "@langchain/openai": "^1.4.4",
+    "axios": "^1.15.0",
+    "dotenv": "^17.4.2",
+    "langchain": "^1.3.3",
+    "openai": "^6.34.0",
+    "zod": "^4.3.6"
+  }
+}
