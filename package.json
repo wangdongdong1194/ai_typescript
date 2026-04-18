@@ -4,13 +4,11 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "chain": "tsx src/langchain.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/index.ts",
-    "t": "tsx src/t.ts",
-    "a": "tsx src/a.ts",
     "start": "tsx src/index.ts",
-    "c": "tsx src/copy_langchain.ts",
+    "tool": "tsx src/tool.ts",
+    "chat": "tsx src/chat.ts",
+    "agent": "tsx src/agent.ts",
     "build": "tsc"
   },
   "keywords": [],
