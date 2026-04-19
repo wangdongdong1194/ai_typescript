@@ -1,14 +1,14 @@
 import { PromptTemplate } from "@langchain/core/prompts";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { RunnableBranch } from "@langchain/core/runnables"; // 这两个类在 langchain 6.0.2 中已经被废弃，使用时会有警告提示，但仍然可以正常使用
-import { chat } from "./chat";
+import { llm } from "./llm";
 
 // 定义两个 PromptTemplate
 const prompt1 = PromptTemplate.fromTemplate("你是谁？");
 const prompt2 = PromptTemplate.fromTemplate("请用一句话总结：{person}");
 
-const chain1 = prompt1.pipe(chat);
-const chain2 = prompt2.pipe(chat);
+const chain1 = prompt1.pipe(llm);
+const chain2 = prompt2.pipe(llm);
 
 // 组合成序列链
 const chain = RunnableSequence.from([

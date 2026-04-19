@@ -1,11 +1,11 @@
 import { createAgent } from "langchain";
 import { timeTool, upperTool, writeLogTool } from "./tool";
-import { chat } from "./chat";
+import { llm } from "./llm";
 
 async function main() {
     const tools = [writeLogTool, upperTool, timeTool];
     const agent = createAgent({
-        model: chat,
+        model: llm,
         tools: tools,
     });
     const res = await agent.invoke({
