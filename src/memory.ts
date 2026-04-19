@@ -2,12 +2,16 @@ import { PromptTemplate } from "@langchain/core/prompts";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { llm } from "./llm";
 
-// 简单内存实现
+// 记忆长度限制
+const MAX_HISTORY = 5;
 const memory: string[] = [];
 
-// 定义 prompt
+// 定义 prompt，带AI身份设定
 const prompt = PromptTemplate.fromTemplate(
-    "历史对话：{history}\n用户：{input}\nAI："
+    `你叫小智，是一名智能AI助手，善于总结和记忆对话历史。
+历史对话：{history}
+用户：{input}
+AI：`
 );
 
 // 定义模型
@@ -17,16 +21,10 @@ const model = llm;
 const chain = RunnableSequence.from([
     async (input: any) => {
         const history = memory.join("\n");
-        // console.log("[PROMPT HISTORY]", history);
         return { history, input: input.input };
     },
     prompt,
     model,
-    async (output: any) => {
-        // 这里的 output 是模型的回复内容
-        console.log('打印结果', output);
-        return { content: output };
-    },
 ]);
 
 // 示例调用
@@ -34,14 +32,20 @@ async function main() {
     let lastInput = { input: "你好" };
     let res1 = await chain.invoke(lastInput);
     memory.push(`用户：${lastInput.input}\nAI：${res1.content}`);
+    if (memory.length > MAX_HISTORY) memory.splice(0, memory.length - MAX_HISTORY);
     console.log("[MEMORY]", memory);
-    //   console.log("第一轮AI回复：", res1);
 
     lastInput = { input: "你是谁？" };
     let res2 = await chain.invoke(lastInput);
     memory.push(`用户：${lastInput.input}\nAI：${res2.content}`);
+    if (memory.length > MAX_HISTORY) memory.splice(0, memory.length - MAX_HISTORY);
     console.log("[MEMORY]", memory);
-    //   console.log("第二轮AI回复：", res2);
+
+    lastInput = { input: "你上次说了啥？" };
+    let res3 = await chain.invoke(lastInput);
+    memory.push(`用户：${lastInput.input}\nAI：${res3.content}`);
+    if (memory.length > MAX_HISTORY) memory.splice(0, memory.length - MAX_HISTORY);
+    console.log("[MEMORY]", memory);
 }
 
 main();
