@@ -10,6 +10,7 @@
     "chat": "tsx src/chat.ts",
     "agent": "tsx src/agent.ts",
     "multichain": "tsx src/multiChain.ts",
+    "memory": "tsx src/memory.ts",
     "build": "tsc"
   },
   "keywords": [],
