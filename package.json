@@ -13,6 +13,7 @@
     "memory": "tsx src/memory.ts",
     "chain_stream": "tsx src/chain_stream.ts",
     "chain_branch": "tsx src/chain_branch.ts",
+    "lcel_advanced": "tsx src/lcel_advanced.ts",
     "build": "tsc"
   },
   "keywords": [],
