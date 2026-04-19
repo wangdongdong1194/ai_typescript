@@ -7,9 +7,9 @@ import fs from "fs";
  */
 
 export const upperTool = new DynamicTool({
-  name: "uppercase",
-  description: "将输入字符串转为大写",
-  func: async (input: string) => String(input).toUpperCase(),
+    name: "uppercase",
+    description: "将输入字符串转为大写",
+    func: async (input: string) => String(input).toUpperCase(),
 });
 
 export const timeTool = new DynamicTool({
@@ -33,10 +33,10 @@ export const writeLogTool = new DynamicTool({
 });
 
 async function main() {
-  const upperRes = await upperTool.invoke("hello, langchain tool!");
-console.log("==>", upperRes);    
-  const timeRes = await timeTool.invoke("");
-  console.log("==>", timeRes);
+    const upperRes = await upperTool.invoke("hello, langchain tool!");
+    console.log("==>", upperRes);
+    const timeRes = await timeTool.invoke("");
+    console.log("==>", timeRes);
 }
 
 // main();
